@@ -13,16 +13,16 @@ public class GameOneHundred {
     public void startGame(){
         Header();
         while (counter != 0){
-            System.out.println("Gracz:");
+            Player();
             player = sc.nextInt();
             if (player > 10 || player < 1) {
-                System.out.println("Podana liczba nie jest z zakresu od 1 do 10. Ponów swój wybór.");
+                Range();
                 continue;
             }
             counter = counter - player;
-            System.out.println("Wynik: " + counter);
+            Result(counter);
             if (counter == 0 || counter == 1){
-                System.out.println("Grę wygrywa Gracz. Gratulacje!!!");
+                playerWins();
                 if (counter == 1)
                     counter--;
                 continue;
@@ -32,11 +32,11 @@ public class GameOneHundred {
             }else {
                 computer = rand.nextInt(10) + 1;
             }
-            System.out.println("Komputer odejmuje liczbę " + computer);
+            Computer(computer);
             counter = counter - computer;
-            System.out.println("Wynik: " + counter);
+            Result(counter);
             if (counter == 0 || counter ==1){
-                System.out.println("Grę wygrywa Komputer.");
+                computerWins();
                 if (counter == 1)
                     counter--;
                 continue;
@@ -47,29 +47,47 @@ public class GameOneHundred {
         System.out.println("GRA W 100\n");
         System.out.println("Wybierz liczbę z przedziału od 1 do 10");
     }
+    private void Player(){
+        System.out.println("Gracz:");
+    }
+    private void Range(){
+        System.out.println("Podana liczba nie jest z zakresu od 1 do 10. Ponów swój wybór.");
+    }
+    private void playerWins(){
+        System.out.println("Grę wygrywa Gracz. Gratulacje!!!");
+    }
+    private void computerWins(){
+        System.out.println("Grę wygrywa Komputer.");
+    }
+    private void Computer(int x){
+        System.out.println("Komputer odejmuje liczbę " + x);
+    }
+    private void Result(int x){
+        System.out.println("Wynik: " + x);
+    }
     public void startCheatGame(){
         Header();
         while (counter != 0){
-            System.out.println("Gracz:");
+            Player();
             player = sc.nextInt();
             if (player > 10 || player < 1) {
-                System.out.println("Podana liczba nie jest z zakresu od 1 do 10. Ponów swój wybór.");
+                Range();
                 continue;
             }
             counter = counter - player;
-            System.out.println("Wynik: " + counter);
+            Result(counter);
             if (counter == 0 || counter == 1){
-                System.out.println("Grę wygrywa Gracz. Gratulacje!!!");
+                playerWins();
                 if (counter == 1)
                     counter--;
                 continue;
             }
             computer = 11 - player;
-            System.out.println("Komputer odejmuje liczbę " + computer);
+            Computer(computer);
             counter = counter - computer;
-            System.out.println("Wynik: " + counter);
+            Result(counter);
             if (counter == 0 || counter ==1){
-                System.out.println("Grę wygrywa Komputer.");
+                computerWins();
                 if (counter == 1)
                     counter--;
                 continue;
